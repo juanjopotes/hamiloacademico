@@ -139,7 +139,7 @@
             <a href="index3.html" class="brand-link">
                 <img src="{{ asset('logo.png')}}" alt="AdminLTE Logo" class="brand-image elevation-3"
                     style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminBlog</span>
+                <span class="brand-text font-weight-light">ACADEMIC SOFT</span>
             </a>
 
             <div class="sidebar">
@@ -148,9 +148,15 @@
                     <div class="image">
                         <img src="https://ui-avatars.com/api/?name={{auth()->user()->name}}&background=0D8ABC&color=fff" class="img-circle elevation-2" alt="User Image">
                     </div>
+                    @if (auth()->user()->role == 'admin')
                     <div class="info">
-                        <a href="#" class="d-block">{{auth()->user()->name}}</a>
+                        <a href="#" style="text-wrap: wrap;" class="d-block">{{auth()->user()->name}} <b>(Profesor)</b></a>
                     </div>
+                    @else
+                    <div class="info">
+                        <a href="#" style="text-wrap: wrap;" class="d-block">{{auth()->user()->name}} <b>(Estudiante)</b></a>
+                    </div>
+                    @endif
                 </div>
 
                 <div class="form-inline">
