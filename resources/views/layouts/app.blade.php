@@ -213,11 +213,38 @@
                                 </li>
                             </ul>
                         </li> --}}
+                        @if (auth()->user()->role == 'admin')
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/cursos" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Categorias
+                                    Cursos
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="-asignaciones" class="nav-link">
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>
+                                    Asignaciones
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/usuario" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Usuarios
+                                </p>
+                            </a>
+                        </li>
+                        @else
+
+                        <li class="nav-item">
+                            <a href="/cursos" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Cursos
                                 </p>
                             </a>
                         </li>
@@ -225,23 +252,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-list"></i>
                                 <p>
-                                    Blog
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-hashtag"></i>
-                                <p>
-                                    Tags
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-comment"></i>
-                                <p>
-                                    Comentarios
+                                     Mis Asignaciones
                                 </p>
                             </a>
                         </li>
@@ -249,10 +260,12 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
-                                    Usuarios
+                                    Perfil
                                 </p>
                             </a>
                         </li>
+                        @endif
+
                     </ul>
                 </nav>
 

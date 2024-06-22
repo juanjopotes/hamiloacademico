@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cursos', function (Blueprint $table) {
+        Schema::create('asignaciones', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('descripcion');
-            $table->string('imagen');
-            $table->decimal('costo',11,2)->default(0);
-            $table->boolean('estado')->default(true);
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
+            $table->foreignId('usuarios_id')->constrained('users');
+            $table->foreignId('cursos_id')->constrained('cursos');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cursos');
+        Schema::dropIfExists('asignaciones');
     }
 };
