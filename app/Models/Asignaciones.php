@@ -15,12 +15,22 @@ class asignaciones extends Model
         'fecha_fin',
         'usuarios_id',
         'cursos_id',
+        'estado'
     ];
 
 
 
     public function usuario()
     {
-        return $this->belongsTo(User::class, 'usuario_id');
+        return $this->belongsTo(User::class, 'usuarios_id');
+    }
+    public function cursos()
+    {
+        return $this->belongsTo(Curso::class, 'cursos_id');
+    }
+
+    public function tareas()
+    {
+        return $this->hasMany(Tareas::class, 'tarea_id');
     }
 }

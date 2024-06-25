@@ -11,6 +11,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('Datepicker/bootstrap-datepicker3.min.css') }}">
+
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -223,7 +228,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="-asignaciones" class="nav-link">
+                            <a href="/asignaciones" class="nav-link">
                                 <i class="nav-icon fas fa-list"></i>
                                 <p>
                                     Asignaciones
@@ -238,6 +243,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/tareas" class="nav-link">
+                                <i class="nav-icon fas fa-pen"></i>
+                                <p>
+                                    Tareas
+                                </p>
+                            </a>
+                        </li>
                         @else
 
                         <li class="nav-item">
@@ -249,7 +262,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/asignaciones" class="nav-link">
                                 <i class="nav-icon fas fa-list"></i>
                                 <p>
                                      Mis Asignaciones
@@ -257,10 +270,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/tareas" class="nav-link">
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>
+                                     Mis Tareas
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/MiUsuario" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
-                                    Perfil
+                                    MI Perfil
                                 </p>
                             </a>
                         </li>
@@ -292,6 +313,9 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+    <script src="{{asset('Datepicker/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('Datepicker/bootstrap-datepicker.min.js')}}"></script>
+    @yield('scripts')
 </body>
 
 </html>

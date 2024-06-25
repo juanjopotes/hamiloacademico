@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -12,8 +13,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        $usuario = User::orderBy('id', 'DESC')->paginate(10);
-        return view('usuarios.index', compact('usuario'));
+        if(auth()->user()->role == 'admin'){
+            $usuario = User::orderBy('id', 'DESC')->paginate(10);
+            return view('usuarios.index', compact('usuario'));
+        }else{
+            $usuario =User::where('id', auth()->user()->id)->first();
+            return view('usuarios.miPerfil', compact('usuario'));
+        }
+
+
     }
 
     /**
@@ -43,17 +51,37 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $usuario = User::find($id);
+        return view('usuarios.edit', compact('usuario'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($id)],
+        ]);
+            $user = User::find($id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            if(auth()->user()->role == 'admin'){
+                $user->role = $request->role;
+            }else{
+                $user->role = 'user';
+            }
+
+            if($user->save()){
+                return redirect('/usuario')->with('success', 'Usuario actualizado exitosamente');
+            }
+            else{
+                return back()->with('error', ' el registro no fue creado');
+            }
+
     }
 
     /**

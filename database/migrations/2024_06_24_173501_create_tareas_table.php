@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('asignaciones', function (Blueprint $table) {
+        Schema::create('tareas', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_inicio');
-            $table->date('fecha_fin');
-            $table->foreignId('usuarios_id')->constrained('users');
-            $table->foreignId('cursos_id')->constrained('cursos');
-            $table->decimal('costo',11,2)->default(0);
+            $table->foreignId('asignacion_id')->constrained('asignaciones');
+            $table->string('descripcion');
+            $table->date('entrega');
+            $table->decimal('nota', 3, 2)->default(0)->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('asignaciones');
+        Schema::dropIfExists('tareas');
     }
 };

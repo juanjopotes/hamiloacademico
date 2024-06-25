@@ -26,7 +26,7 @@ class User extends Authenticatable
 
     public function asignaciones()
     {
-        return $this->hasMany(Asignaciones::class, 'usuario_id');
+        return $this->hasMany(Asignaciones::class, 'asignaciones_id');
     }
 
     /**

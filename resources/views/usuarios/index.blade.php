@@ -20,9 +20,6 @@
             <div class="col-md-8 mt-5">
                 <div class="card">
                     <div class="card-body">
-                        <div class="text-end">
-                            <a href="{{ url('/usuarios/registrar') }}" class="btn btn-dark text-end">Nuevo usuario</a>
-                        </div>
 
                         <div class="table-responsive mt-3">
 
@@ -44,7 +41,7 @@
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->role }}</td>
                                             <td>
-                                                <a href="{{ url('/usuarios/actualizar/' . $item->id) }}"
+                                                <a href="{{ url('/usuario/actualizar/' . $item->id) }}"
                                                     class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                             </td>
                                         </tr>

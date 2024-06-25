@@ -21,7 +21,7 @@ class Curso extends Model
 
     public function asignaciones()
     {
-        return $this->hasMany(Asignaciones::class, 'cursos_id');
+        return $this->hasMany(Asignaciones::class, 'asignaciones_id');
     }
     public function getImagenUrl(){
         if($this->imagen && $this->imagen != 'default.png' && $this->imagen != null){
